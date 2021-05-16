@@ -11,9 +11,12 @@ const config = {
   appId: "1:606791121988:web:6ed379a52ce99af1c29011",
   measurementId: "G-HRMDRYRSJG",
 };
+
 //create user profile in firestore when user logs in using O-auth the first time
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   //return if user signsout
+
   console.log("creating user");
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -23,7 +26,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
     try {
       await userRef.set({
         displayName,
